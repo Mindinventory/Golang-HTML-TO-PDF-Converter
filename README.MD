@@ -4,30 +4,36 @@
 <a href="https://goreportcard.com/report/github.com/Mindinventory/Golang-HTML-TO-PDF-Converter" style="pointer-events: none;" target="_blank"><img src="https://goreportcard.com/badge/github.com/Mindinventory/Golang-HTML-TO-PDF-Converter"></a>
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/mindinventory/Golang-HTML-TO-PDF-Converter/blob/master/LICENSE)
 
+For reading any document, one prefers PDF format over any other formats as it is considered as a standard format for any document in our day to day life. We often come across converting any form details or previews on the website in the form of HTML to PDF. For GoLang, understanding such usability, Developers at Mindinventory made an effort for making one HTML to PDF Converter which can be used for converting HTML content to PDF.
 
+
+## What it is?
+
+It is a repository, integrating which one can offer HTML to PDF Conversion to their customers. 
+
+## Prerequisite
+
+Install wkhtmltopdf using below command 
+  - ``sudo apt install wkhtmltopdf`` - for Ubuntu
+  - ``brew install Caskroom/cask/wkhtmltopdf`` - For Mac
+
+
+## Steps to Follow
 
 <img src="https://raw.githubusercontent.com/Mindinventory/Golang-HTMLTOPDF-Converter/master/html-pdf-new.gif" >
 
-## Follow below steps to generate HTML to PDF using Golang:
 
   1. Create a sample HTML file inside of your project.
   
-  2. Make sure to download the below library in your system using the following command.  
-     
-     - ``sudo apt install wkhtmltopdf`` - for Ubuntu
-     - ``brew install Caskroom/cask/wkhtmltopdf`` - For Mac
-  
-  3. Download go package using the below command for parsing the HTMl template.
+  2. Get go package using the below command for parsing the HTMl template.
      - ``go get github.com/SebastiaanKlippert/go-wkhtmltopdf``
    
-  4. We need to download another package for converting this html parse data to pdf using the below command.    
+  3. Get another go package for converting this html parse data to pdf using the below command.    
      - ``go get html/template``
      
-  5. Run 
+  4. Run below command 
      - ``go run main.go``
      
-       
- 
   
 After finish above steps, You can generate pdf file from html. 
 
