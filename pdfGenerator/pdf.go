@@ -11,16 +11,19 @@ import (
 	"time"
 )
 
+//pdf requestpdf struct
 type RequestPdf struct {
 	body string
 }
 
+//new request to pdf function
 func NewRequestPdf(body string) *RequestPdf {
 	return &RequestPdf{
 		body: body,
 	}
 }
 
+//parsing template function
 func (r *RequestPdf) ParseTemplate(templateFileName string, data interface{}) error {
 
 	t, err := template.ParseFiles(templateFileName)
@@ -35,6 +38,7 @@ func (r *RequestPdf) ParseTemplate(templateFileName string, data interface{}) er
 	return nil
 }
 
+//generate pdf function
 func (r *RequestPdf) GeneratePDF(pdfPath string) (bool, error) {
 	t := time.Now().Unix()
 	// write whole the body
