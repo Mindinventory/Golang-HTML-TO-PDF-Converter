@@ -1,7 +1,7 @@
 package main
 
 import (
-	u "Golang-HTMLTOPDF-Converter/pdfGenerator"
+	u "Golang-HTML-TO-PDF-Converter/pdfGenerator"
 	"fmt"
 )
 
@@ -23,7 +23,7 @@ func main() {
 		Contact     string
 		Country     string
 	}{
-		Title:       "HTML to PDF generator",
+		Title:       "HTML to PDF generator, as fixed by Robb S.",
 		Description: "This is the simple HTML to PDF file.",
 		Company:     "Jhon Lewis",
 		Contact:     "Maria Anders",
