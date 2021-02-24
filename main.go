@@ -1,7 +1,7 @@
 package main
 
 import (
-	u "Golang-HTMLTOPDF-Converter/pdfGenerator"
+	u "Golang-HTML-TO-PDF-Converter/pdfGenerator"
 	"fmt"
 )
 
