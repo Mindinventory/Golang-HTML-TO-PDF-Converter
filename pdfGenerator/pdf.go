@@ -42,6 +42,13 @@ func (r *RequestPdf) ParseTemplate(templateFileName string, data interface{}) er
 func (r *RequestPdf) GeneratePDF(pdfPath string) (bool, error) {
 	t := time.Now().Unix()
 	// write whole the body
+
+	if _, err := os.Stat("cloneTemplate/"); os.IsNotExist(err) {
+		errDir := os.Mkdir("cloneTemplate/", 0777)
+		if errDir != nil {
+			log.Fatal(errDir)
+		}
+	}
 	err1 := ioutil.WriteFile("cloneTemplate/"+strconv.FormatInt(int64(t), 10)+".html", []byte(r.body), 0644)
 	if err1 != nil {
 		panic(err1)
@@ -75,6 +82,13 @@ func (r *RequestPdf) GeneratePDF(pdfPath string) (bool, error) {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	dir, err := os.Getwd()
+	if err != nil{
+		panic(err)
+	}
+
+	defer os.RemoveAll(dir + "/cloneTemplate")
 
 	return true, nil
 }

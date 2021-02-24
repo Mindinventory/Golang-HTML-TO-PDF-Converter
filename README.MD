@@ -33,11 +33,30 @@ Install wkhtmltopdf using below command
      
   4. Run below command 
      - ``go run main.go``
-     
-  
+
+###The previous version of golang was deprecated and not supporting the converter library so dependencies are updated with the new updates.
+
+#Steps by step:
+
+- Install ``golang (1.16)``
+- Check ``go version`` (Make Sure it is latest = 1.16)
+- ``go mod vendor``
+- ``go build``
+
+
+##To Run the project:
+
+- ``go run main.go``
+
+## Update project dependencies 
+
+- ``go get github.com/SebastiaanKlippert/go-wkhtmltopdf`` v1.6.1
+- ``go get html/template``
+
+
 After finish above steps, You can generate pdf file from html. 
 
-**NOTES:** Don't forget to mention your html and pdf path details inside your code. If you want to generate pdf for static data then it is not mandatory to generate another html for clone data. Use that same sample html inside the code.
+**NOTES:** The pdf will be generated in the storage directory. Don't forget to mention your html and pdf path details inside your code. If you want to generate pdf for static data then it is not mandatory to generate another html for clone data. Use that same sample html inside the code.
 
 
 ## LICENSE!
