@@ -31,7 +31,12 @@ func main() {
 	}
 
 	if err := r.ParseTemplate(templatePath, templateData); err == nil {
-		ok, _ := r.GeneratePDF(outputPath)
+
+		// Generate PDF with custom arguments
+		args := []string{"no-pdf-compression"}
+
+		// Generate PDF
+		ok, _ := r.GeneratePDF(outputPath, args)
 		fmt.Println(ok, "pdf generated successfully")
 	} else {
 		fmt.Println(err)
