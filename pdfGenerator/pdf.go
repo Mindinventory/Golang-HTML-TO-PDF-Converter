@@ -2,28 +2,29 @@ package pdfGenerator
 
 import (
 	"bytes"
-	"github.com/SebastiaanKlippert/go-wkhtmltopdf"
 	"html/template"
 	"io/ioutil"
 	"log"
 	"os"
 	"strconv"
 	"time"
+
+	"github.com/SebastiaanKlippert/go-wkhtmltopdf"
 )
 
-//pdf requestpdf struct
+// pdf requestpdf struct
 type RequestPdf struct {
 	body string
 }
 
-//new request to pdf function
+// new request to pdf function
 func NewRequestPdf(body string) *RequestPdf {
 	return &RequestPdf{
 		body: body,
 	}
 }
 
-//parsing template function
+// parsing template function
 func (r *RequestPdf) ParseTemplate(templateFileName string, data interface{}) error {
 
 	t, err := template.ParseFiles(templateFileName)
@@ -38,8 +39,8 @@ func (r *RequestPdf) ParseTemplate(templateFileName string, data interface{}) er
 	return nil
 }
 
-//generate pdf function
-func (r *RequestPdf) GeneratePDF(pdfPath string) (bool, error) {
+// generate pdf function
+func (r *RequestPdf) GeneratePDF(pdfPath string, args []string) (bool, error) {
 	t := time.Now().Unix()
 	// write whole the body
 
@@ -67,6 +68,19 @@ func (r *RequestPdf) GeneratePDF(pdfPath string) (bool, error) {
 		log.Fatal(err)
 	}
 
+	// Use arguments to customize PDF generation process
+	for _, arg := range args {
+		switch arg {
+		case "low-quality":
+			pdfg.LowQuality.Set(true)
+		case "no-pdf-compression":
+			pdfg.NoPdfCompression.Set(true)
+		case "grayscale":
+			pdfg.Grayscale.Set(true)
+			// Add other arguments as needed
+		}
+	}
+
 	pdfg.AddPage(wkhtmltopdf.NewPageReader(f))
 
 	pdfg.PageSize.Set(wkhtmltopdf.PageSizeA4)
@@ -84,7 +98,7 @@ func (r *RequestPdf) GeneratePDF(pdfPath string) (bool, error) {
 	}
 
 	dir, err := os.Getwd()
-	if err != nil{
+	if err != nil {
 		panic(err)
 	}
 
